@@ -1,7 +1,7 @@
-#Simple Sort
+# Simple Sort
 Simple API set up with Fast API.
 
-###Sort Algorithms
+### Sort Algorithms
 * Quicksort
 * Mergesort
 * Heapsort
