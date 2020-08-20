@@ -13,44 +13,38 @@ async def root():
 
 @app.post('/quicksort')
 async def quicksort(a: list):
-    start = time.perf_counter()
-    array = sort_array(np.array(a))
-    stop = time.perf_counter()
+    array, time = sort_array(np.array(a))
     return {
         "sorted_array": str(array),
-        "time": stop - start
+        "time": time
     }
 
 @app.post('/mergesort')
 async def mergesort(a: list):
-    start = time.perf_counter()
-    array = sort_array(np.array(a), 'mergesort')
-    stop = time.perf_counter()
+    array, time = sort_array(np.array(a), 'mergesort')
     return {
         "sorted_array": str(array),
-        "time": stop - start
+        "time": time
     }
 
 @app.post('/heapsort')
 async def heapsort(a: list):
-    start = time.perf_counter()
-    array = sort_array(np.array(a), 'heapsort')
-    stop = time.perf_counter()
+    array, time = sort_array(np.array(a), 'heapsort')
     return {
         "sorted_array": str(array),
-        "time": stop - start
+        "time": time
     }
 
 @app.post('/stablesort')
 async def stablesort(a: list):
-    start = time.perf_counter()
-    array = sort_array(np.array(a), 'stable')
-    stop = time.perf_counter()
+    array, time = sort_array(np.array(a), 'stable')
     return {
         "sorted_array": str(array),
-        "time": stop - start
+        "time": time
     }
 
 def sort_array(array, sort_type = None):
-    print(array)
-    return np.sort(array, kind=sort_type)
+    start = time.perf_counter()
+    a = np.sort(array, kind=sort_type)
+    stop = time.perf_counter()
+    return a, stop - start
